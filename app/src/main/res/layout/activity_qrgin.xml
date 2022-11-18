@@ -33,18 +33,17 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
         android:background="@drawable/buttonstyle"
         android:text="QR"
         android:enabled="true"
         style="@style/button_layout"
+        android:drawableStart="@drawable/qr_code_svgrepo_com__1_"
 
         />
 
     <Button
         android:id="@+id/buttonCame"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
         android:background="@drawable/buttonstyle"
         android:text="Scan"
         android:enabled="false"

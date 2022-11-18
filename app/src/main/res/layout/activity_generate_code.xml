@@ -33,7 +33,6 @@
     <Button
         android:id="@+id/buttonGen"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
         android:background="@drawable/buttonstyle"
         android:text="QR"
         style="@style/button_layout"
@@ -54,7 +53,6 @@
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
         android:background="@drawable/buttonstyle"
         android:text="@string/save"
         android:enabled="true"
