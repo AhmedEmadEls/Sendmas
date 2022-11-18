@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -30,29 +31,41 @@ import androidmads.library.qrgenearator.QRGEncoder;
 
 
 public class qrgin extends AppCompatActivity {
-
+    // widgets
     private static int REQUEST_CODE = 100 ;
     private EditText editText;
-    private Button button , button5 ;
+    private Button buttonGen , button5 , buttonCame;
     ImageView imageView;
     private OutputStream outputStream;
     Bitmap qrBits;
+
+    // vars
+    public static final int CAMERA_PERMISSION_CODE = 100;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrgin);
         editText = findViewById(R.id.editTextTextPersonName3);
-        button = findViewById(R.id.button2);
+        buttonGen = findViewById(R.id.button2);
         imageView = findViewById(R.id.imageView);
         editText.addTextChangedListener(log);
         button5 = findViewById(R.id.button5);
+        buttonCame = findViewById(R.id.buttonCame);
 
 
-        button.setOnClickListener(new View.OnClickListener() {
+
+
+        buttonGen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(qrgin.this , GenerateCode.class);
+                startActivity(intent);
+
+
+                /*
                 imageView.setVisibility(View.VISIBLE);
                 button5.setVisibility(View.VISIBLE);
                 String num = ("https://wa.me/"+editText.getText().toString().trim());
@@ -61,63 +74,20 @@ public class qrgin extends AppCompatActivity {
                 qrBits =  qrgEncoder.getBitmap();
                 imageView.setImageBitmap(qrBits);
                 closeKeyboard();
+                 */
+
 
             }
         });
 
-        button5.setOnClickListener(new View.OnClickListener() {
+
+        buttonCame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(qrgin.this , Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
-                   saveImage();
-                } else {
-                    askPermission();
-                }
+                checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
             }
         });
-    }
 
-    private void askPermission() {
-        ActivityCompat.requestPermissions(qrgin.this , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUEST_CODE);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_CODE){
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                saveImage();
-            }else{
-                Toast.makeText(qrgin.this , "Please provide the required permissons" , Toast.LENGTH_SHORT).show();
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    private void saveImage() {
-        File dir = new File(Environment.getExternalStorageDirectory(),"SaveImage");
-        if (!dir.exists()){
-            dir.mkdir();
-        }
-        Bitmap bitmap = qrBits;
-        File file = new File(dir,System.currentTimeMillis()+".png");
-        try {
-            outputStream = new FileOutputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        bitmap.compress(Bitmap.CompressFormat.PNG , 100 ,outputStream);
-        Toast.makeText(qrgin.this, "Succesfule saved" , Toast.LENGTH_SHORT).show();
-
-        try {
-            outputStream.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            outputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void closeKeyboard() {
@@ -136,13 +106,25 @@ public class qrgin extends AppCompatActivity {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             String numper = editText.getText().toString().trim();
-            button.setEnabled(!numper.isEmpty());
+            buttonGen.setEnabled(!numper.isEmpty());
         }
         @Override
         public void afterTextChanged(Editable editable) {
 
         }
     };
+
+    // camera permission
+
+    public void checkPermission(String permission, int requestCode){
+                if (ContextCompat.checkSelfPermission(qrgin.this, permission)
+                        == PackageManager.PERMISSION_DENIED){
+                    ActivityCompat.requestPermissions(qrgin.this, new String[]{permission},
+                            requestCode);
+                }else {
+                    Toast.makeText(this, "Permission Already Granted", Toast.LENGTH_SHORT).show();
+                }
+    }
 
 
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".qrgin"
+    tools:context=".GenerateCode"
     android:background="@drawable/layered_waves_haikei__2_"
     >
 
@@ -19,7 +19,7 @@
         />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editTextNamber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="add what's numper"
@@ -31,50 +31,36 @@
         />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonGen"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/buttonstyle"
         android:text="QR"
-        android:enabled="true"
-        style="@style/button_layout"
-
-        />
-
-    <Button
-        android:id="@+id/buttonCame"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/buttonstyle"
-        android:text="Scan"
-        android:enabled="false"
         style="@style/button_layout"
 
         />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewQR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:layout_margin="15dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
         />
+
 
     <Button
-
-        android:id="@+id/button5"
+        android:id="@+id/buttonSave"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
+        android:layout_height="60dp"
         android:background="@drawable/buttonstyle"
+        android:text="@string/save"
+        android:enabled="true"
         style="@style/button_layout"
-        android:visibility="visible"
-
+        android:visibility="invisible"
         />
-
-
 
 
 </LinearLayout>
