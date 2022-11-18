@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="buttom_top">10dp</dimen>
+    <dimen name="buttom_down">10dp</dimen>
+    <dimen name="buttom_right">10dp</dimen>
+    <dimen name="buttom_left">10dp</dimen>
+    <dimen name="text_size">20sp</dimen>
+
+</resources>

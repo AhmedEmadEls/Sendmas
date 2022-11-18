@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Sendmas</string>
+    <string name="text_view_massege">Send massage to Whatsapp by number only</string>
+
+    <string name="number">Whatsapp number</string>
+    <string name="message">The message</string>
+    <string name="Send">Send Message</string>
+
+    <string name="Create_qr">Create QR</string>
+    <string name="creatr_url">Create URL</string>
+    <string name="save">SAVE</string>
+    <string name="pleaseprovide">Please provide the required permissions</string>
+
+
+</resources>

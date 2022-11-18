@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layered_waves_haikei__2_"
+    android:orientation="vertical"
+    tools:context=".urlmac">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="send massige what's app"
+        android:textColor="#FBFFB9"
+        android:textColorHint="#FBFFB9"
+        android:textSize="60px"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/buttom_left"
+        android:layout_marginTop="@dimen/buttom_top"
+        android:layout_marginRight="@dimen/buttom_right"
+        android:background="@drawable/custom_edi"
+        android:hint="add what's numper"
+        android:inputType="phone"
+        android:padding="10dp"
+        style="@style/edit_text_layout"
+        />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="makeurl"
+        android:text="Send"
+        android:textColor="@color/text"
+        style="@style/button_lay_out"
+        android:background="@drawable/custom_edi"
+        android:layout_marginTop="@dimen/buttom_top"
+        android:layout_marginLeft="@dimen/buttom_left"
+        android:layout_marginRight="@dimen/buttom_right"
+
+        />
+
+
+</LinearLayout>

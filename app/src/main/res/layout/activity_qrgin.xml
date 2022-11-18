@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".qrgin"
+    android:background="@drawable/layered_waves_haikei__2_"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="put namber to creating Ur QR"
+        style="@style/text_view_layout"
+
+        />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="add what's numper"
+        android:inputType="phone"
+        style="@style/edit_text_layout"
+        android:background="@drawable/custom_edi"
+
+
+        />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/buttonstyle"
+        android:text="Button"
+        android:enabled="false"
+        style="@style/button_layout"
+
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_margin="15dp"
+        tools:srcCompat="@tools:sample/avatars" />
+        />
+
+    <Button
+
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:background="@drawable/buttonstyle"
+        style="@style/button_layout"
+        android:visibility="gone"
+
+        />
+
+
+
+
+</LinearLayout>

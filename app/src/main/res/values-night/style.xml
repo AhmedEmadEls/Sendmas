@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="edit_text_layout" parent="android:Widget.EditText">
+
+        <item name="android:textSize">25sp</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/hint_text</item>
+        <item name="android:layout_marginRight">@dimen/buttom_right</item>
+        <item name="android:layout_marginLeft">@dimen/buttom_left</item>
+        <item name="android:layout_marginTop">@dimen/buttom_top</item>
+        <item name="android:padding">10dp</item>
+
+    </style>
+
+
+    <style name="button_lay_out" parent="android:Widget.Button">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">@dimen/buttom_left</item>
+        <item name="android:layout_marginRight">@dimen/buttom_right</item>
+        <item name="android:layout_marginTop">@dimen/buttom_top</item>
+        <item name="android:padding">15dp</item>
+
+    </style>
+
+</resources>
