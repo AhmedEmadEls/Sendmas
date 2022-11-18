@@ -38,6 +38,13 @@ public class qrgin extends AppCompatActivity {
     private OutputStream outputStream;
     Bitmap qrBits;
 
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
