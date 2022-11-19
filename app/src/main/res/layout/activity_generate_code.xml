@@ -50,15 +50,34 @@
         />
 
 
-    <Button
-        android:id="@+id/buttonSave"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:background="@drawable/buttonstyle"
-        android:text="@string/save"
-        android:enabled="true"
-        style="@style/button_layout"
-        android:visibility="invisible"
-        />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonSave"
+            style="@style/button_layout"
+            android:layout_width="match_parent"
+            android:background="@drawable/buttonstyle"
+            android:enabled="true"
+            android:text="@string/save"
+            android:visibility="invisible"
+            android:layout_weight="1"
+
+            />
+
+        <Button
+            android:id="@+id/buttonShare"
+            style="@style/button_layout"
+            android:layout_width="match_parent"
+            android:background="@drawable/buttonstyle"
+            android:enabled="true"
+            android:text="@string/save"
+            android:visibility="invisible"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
 
 
 </LinearLayout>

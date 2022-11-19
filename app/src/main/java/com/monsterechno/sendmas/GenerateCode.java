@@ -2,7 +2,10 @@ package com.monsterechno.sendmas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -21,7 +24,8 @@ public class GenerateCode extends AppCompatActivity {
     public final static int QRCodeWidth = 500 ;
     Bitmap bitmap;
     private ImageView imageViewQR;
-    private Button buttonSave , buttonGen;
+    private Button buttonSave;
+    private Button buttonShare;
     private EditText editText;
 
     @Override
@@ -29,8 +33,9 @@ public class GenerateCode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_code);
         editText = findViewById(R.id.editTextNamber);
-        buttonGen = findViewById(R.id.buttonGen);
+        Button buttonGen = findViewById(R.id.buttonGen);
         buttonSave = findViewById(R.id.buttonSave);
+        buttonShare = findViewById(R.id.buttonShare);
         imageViewQR = findViewById(R.id.imageViewQR);
 
 
@@ -46,6 +51,7 @@ public class GenerateCode extends AppCompatActivity {
                         imageViewQR.setVisibility(View.VISIBLE);
                         imageViewQR.setImageBitmap(bitmap);
                         buttonSave.setVisibility(View.VISIBLE);
+                        buttonShare.setVisibility(View.VISIBLE);
                         buttonSave.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -55,6 +61,28 @@ public class GenerateCode extends AppCompatActivity {
                                         .show();
                             }
                         });
+
+                        buttonShare.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                                sharingIntent.setType("image/*");
+                                sharingIntent.putExtra(Intent.EXTRA_STREAM, bitmap);
+                                startActivity(sharingIntent);
+                                /*
+                                Intent chooser = Intent.createChooser(sharingIntent, "Share photo");
+                                if (sharingIntent.resolveActivity(getPackageManager()) != null ){
+                                    startActivity(chooser);
+                                }
+
+                                 */
+
+                            }
+                        });
+
+
+
+
 
                     }catch (WriterException e){
                         e.printStackTrace();
