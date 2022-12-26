@@ -2,13 +2,17 @@ package com.monsterechno.sendmas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,25 +23,27 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
+import java.io.OutputStream;
+
 public class GenerateCode extends AppCompatActivity {
 
     public final static int QRCodeWidth = 500 ;
-    Bitmap bitmap;
+    private Bitmap bitmap;
     private ImageView imageViewQR;
-    private Button buttonSave;
-    private Button buttonShare;
+    private Button buttonSave , buttonGen , buttonShare ;
     private EditText editText;
+    private OutputStream outputStream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_code);
         editText = findViewById(R.id.editTextNamber);
-        Button buttonGen = findViewById(R.id.buttonGen);
+        editText.addTextChangedListener(log);
+        buttonGen = findViewById(R.id.buttonGen);
         buttonSave = findViewById(R.id.buttonSave);
-        buttonShare = findViewById(R.id.buttonShare);
+        buttonShare = findViewById(R.id.buttonShare2);
         imageViewQR = findViewById(R.id.imageViewQR);
-
 
         buttonGen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,11 +71,12 @@ public class GenerateCode extends AppCompatActivity {
                         buttonShare.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                /*
                                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                                 sharingIntent.setType("image/*");
                                 sharingIntent.putExtra(Intent.EXTRA_STREAM, bitmap);
                                 startActivity(sharingIntent);
-                                /*
+
                                 Intent chooser = Intent.createChooser(sharingIntent, "Share photo");
                                 if (sharingIntent.resolveActivity(getPackageManager()) != null ){
                                     startActivity(chooser);
@@ -80,17 +87,12 @@ public class GenerateCode extends AppCompatActivity {
                             }
                         });
 
-
-
-
-
                     }catch (WriterException e){
                         e.printStackTrace();
                     }
                 }
             }
         });
-
     }
 
     // gen QR
@@ -121,4 +123,28 @@ public class GenerateCode extends AppCompatActivity {
         bitmap.setPixels(pixels,0 , 500 , 0 , 0 , bitMatrixWidth , bitMatrixHeight );
         return bitmap;
     }
+
+    private void closeKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null){
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(),0);
+        }
+    }
+
+    private TextWatcher log = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String numper = editText.getText().toString().trim();
+            buttonGen.setEnabled(!numper.isEmpty());
+        }
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
 }

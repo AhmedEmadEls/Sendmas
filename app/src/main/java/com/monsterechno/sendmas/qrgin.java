@@ -1,6 +1,5 @@
 package com.monsterechno.sendmas;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -9,10 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.ImageWriter;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -21,14 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import androidmads.library.qrgenearator.QRGContents;
-import androidmads.library.qrgenearator.QRGEncoder;
-
 
 public class qrgin extends AppCompatActivity {
     // widgets
@@ -36,12 +24,10 @@ public class qrgin extends AppCompatActivity {
     private EditText editText;
     private Button buttonGen , button5 , buttonCame;
     ImageView imageView;
-    private OutputStream outputStream;
     Bitmap qrBits;
 
     // vars
     public static final int CAMERA_PERMISSION_CODE = 100;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +40,6 @@ public class qrgin extends AppCompatActivity {
         button5 = findViewById(R.id.button5);
         buttonCame = findViewById(R.id.buttonCame);
 
-
-
-
         buttonGen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +47,7 @@ public class qrgin extends AppCompatActivity {
                 Intent intent = new Intent(qrgin.this , GenerateCode.class);
                 startActivity(intent);
 
+                //https://telegram.me/+201021849411     Telegram
 
                 /*
                 imageView.setVisibility(View.VISIBLE);
@@ -75,8 +59,6 @@ public class qrgin extends AppCompatActivity {
                 imageView.setImageBitmap(qrBits);
                 closeKeyboard();
                  */
-
-
             }
         });
 

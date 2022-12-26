@@ -68,7 +68,7 @@
             />
 
         <Button
-            android:id="@+id/buttonShare"
+            android:id="@+id/buttonShare2"
             style="@style/button_layout"
             android:layout_width="match_parent"
             android:background="@drawable/buttonstyle"
